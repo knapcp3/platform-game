@@ -1,4 +1,5 @@
-import "babel-polyfill";
-import world from "./world";
+import "@babel/polyfill";
+import levels from "./levels";
 
-document.getElementById("output").innerHTML = `Helloo ${world}!`;
+document.getElementById("output").innerHTML = `Helloo ${levels}!`;
+

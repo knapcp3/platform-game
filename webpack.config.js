@@ -17,24 +17,27 @@ module.exports = {
     contentBase: dirBuild
   },
   module: {
-    loaders: [
+    rules: [
       {
-        loader: "babel-loader",
-        test: dirJs
+        test: dirJs,
+        use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            }
+          }
       }
     ]
   },
   plugins: [
-    // Copies the files over
     new CopyWebpackPlugin([
       { from: dirHtml } // to: output.path
-    ]),
-    // Avoid publishing files when compilation fails
-    new webpack.NoErrorsPlugin()
+    ])
   ],
   stats: {
     colors: true
   },
-  // Create Sourcemaps for the bundle
+  mode: "development",
+  // Sourcemaps for the bundle
   devtool: "source-map"
 };

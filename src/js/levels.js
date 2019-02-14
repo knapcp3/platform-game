@@ -8,3 +8,5 @@ let simpleLevelPlan = `
 ......#++++++++++++#..
 ......##############..
 ......................`;
+
+export default simpleLevelPlan;
