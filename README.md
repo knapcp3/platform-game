@@ -1,3 +1,3 @@
 ## Platform Game
 
-Project from Marijn Haverbeke's book "Eloquent javascript".
+Platform game based on project from Marijn Haverbeke's book "Eloquent javascript".
