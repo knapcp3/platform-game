@@ -1,14 +1,27 @@
 import Vec from './../modules/Vec'
+import Actor from './Actor'
 
-export default class Lava {
+export default class Lava extends Actor {
   constructor(pos, speed, reset) {
-    this.pos = pos
-    this.speed = speed
-    this.reset = reset
+    super(pos, new Vec(1, 1))
+    this._speed = speed
+    this._reset = reset
   }
 
   get type() {
     return 'lava'
+  }
+
+  get speed() {
+    return this._speed
+  }
+
+  set speed(v) {
+    this._speed = v
+  }
+
+  get reset() {
+    return this._reset
   }
 
   static create(pos, ch) {
@@ -21,5 +34,3 @@ export default class Lava {
     }
   }
 }
-
-Lava.prototype.size = new Vec(1, 1)
