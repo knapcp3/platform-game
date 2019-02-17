@@ -1,15 +1,19 @@
 export default class State {
   constructor(level, actors, status) {
-    this.level = level
-    this.actors = actors
-    this.status = status
+    this._level = level
+    this._actors = actors
+    this._status = status
   }
 
-  static start() {
+  static start(level) {
     return new State(level, level.startActors, 'playing')
   }
 
   get player() {
-    return this.actors.find(actor => actor.type === 'player')
+    return this._actors.find(actor => actor.type === 'player')
+  }
+
+  get actors() {
+    return this._actors
   }
 }
