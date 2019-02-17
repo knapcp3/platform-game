@@ -1,15 +1,15 @@
 import '@babel/polyfill'
+import css from './../styles/styles.css'
+
 import { simpleLevelPlan } from './Level/levels'
+import DOMDisplay from './Display/DOMDisplay'
 import Level from './Level/Level'
 import Player from './Actors/Player'
 import Lava from './Actors/Lava'
 import Vec from './modules/Vec'
+import { drawGrid } from './Display/drawing'
+import State from './modules/State'
 
 let simpleLevel = new Level(simpleLevelPlan)
-console.log(`${simpleLevel.width} by ${simpleLevel.height}`)
-
-let player = Player.create(new Vec(1, 1))
-console.log(player.pos)
-
-let lava = Lava.create(new Vec(1, 1), 'v')
-console.log(lava.reset)
+let display = new DOMDisplay(document.body, simpleLevel)
+display.syncState(State.start(simpleLevel))
