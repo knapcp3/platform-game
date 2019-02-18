@@ -1,14 +1,22 @@
 export default class Vec {
   constructor(x, y) {
-    this.x = x
-    this.y = y
+    this._x = x
+    this._y = y
   }
 
   plus(other) {
-    return new Vec(this.x + other.x, this.y + other.y)
+    return new Vec(this._x + other.x, this._y + other.y)
   }
-  
+
   times(factor) {
-    return new Vec(this.x * factor, this.y * factor)
+    return new Vec(this._x * factor, this._y * factor)
+  }
+
+  get x() {
+    return this._x
+  }
+
+  get y() {
+    return this._y
   }
 }

@@ -1,15 +1,15 @@
-const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const dirJs = path.resolve(__dirname, "src/js");
-const dirHtml = path.resolve(__dirname, "src/html");
-const dirBuild = path.resolve(__dirname, "build");
+const dirJs = path.resolve(__dirname, 'src/js')
+const dirHtml = path.resolve(__dirname, 'src/html')
+const dirBuild = path.resolve(__dirname, 'build')
 
 module.exports = {
-  entry: path.resolve(dirJs, "index.js"),
+  entry: path.resolve(dirJs, 'index.js'),
   output: {
     path: dirBuild,
-    filename: "bundle.js"
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: dirBuild
@@ -19,11 +19,15 @@ module.exports = {
       {
         test: dirJs,
         use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            }
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
           }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -35,7 +39,7 @@ module.exports = {
   stats: {
     colors: true
   },
-  mode: "development",
+  mode: 'development',
   // Sourcemaps for the bundle
-  devtool: "source-map"
-};
+  devtool: 'source-map'
+}
