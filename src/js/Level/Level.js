@@ -21,6 +21,21 @@ export default class Level {
     })
   }
 
+  touches(position, size, type) {
+    let xStart = Math.floor(position.x)
+    let xEnd = Math.ceil(position.x + size.x)
+    let yStart = Math.floor(position.y)
+    let yEnd = Math.ceil(position.y + size.y)
+    for (let y = yStart; y < yEnd; y++) {
+      for (let x = xStart; x < xEnd; x++) {
+        let isOutside = x < 0 || x >= this._width || y < 0 || y >= this._height
+        let here = isOutside ? 'wall' : this._rows[y][x]
+        if (here == type) return true
+      }
+    }
+    return false
+  }
+
   get height() {
     return this._height
   }
