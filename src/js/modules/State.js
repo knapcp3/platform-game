@@ -12,6 +12,7 @@ export default class State {
   }
 
   update(time, keys) {
+    let prevPlayer = this.player
     let actors = this._actors.map(actor => actor.update(time, this, keys))
     let newState = new State(this._level, actors, this._status)
 
@@ -24,7 +25,7 @@ export default class State {
 
     actors.forEach(actor => {
       if (actor != player && overlap(actor, player)) {
-        newState = actor.collide(newState)
+        newState = actor.collide(newState, prevPlayer.pos)
       }
     })
     return newState

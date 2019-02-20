@@ -16,11 +16,11 @@ export default class Monster extends Actor {
     return new Monster(pos.plus(new Vec(0, -1)), new Vec(monsterXSpeed, 0))
   }
 
-  update(time, state) {    
+  update(time, state) {
     let speedX = this._speed.x
     let newPos = new Vec(super.pos.x, super.pos.y)
     let movedX = newPos.plus(new Vec(speedX, 0).times(time))
-    
+
     const downElems = state.level.downElements(movedX, super.size)
     const touchesWall = state.level.touches(movedX, super.size, 'wall')
 
@@ -29,11 +29,22 @@ export default class Monster extends Actor {
     } else {
       newPos = movedX
     }
-    
+
     return new Monster(newPos, new Vec(speedX, 0))
   }
 
-  collide(state) {
+  collide(state, prevPlayerPos) {
+    let player = state.player
+
+    const monsterTopY = super.pos.y
+
+    const prevPlayerBottomY = prevPlayerPos.y + player.size.y
+
+    if (prevPlayerBottomY < monsterTopY) {
+      let filteredActors = state.actors.filter(actor => actor !== this)
+      return new State(state.level, filteredActors, 'playing')
+    }
+
     return new State(state.level, state.actors, 'lost')
   }
 
