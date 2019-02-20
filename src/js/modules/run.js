@@ -14,10 +14,12 @@ function trackKeys(keys) {
   }
   window.addEventListener('keydown', track)
   window.addEventListener('keyup', track)
+  down['removeListeners'] = function() {
+    window.removeEventListener('keydown', track)
+    window.removeEventListener('keyup', track)
+  }
   return down
 }
-
-const arrowKeys = trackKeys(['ArrowLeft', 'ArrowRight', 'ArrowUp'])
 
 function runAnimation(frameFunc) {
   let lastTime = null
@@ -59,10 +61,13 @@ function runLevel(level, Display) {
       } else {
         display.clear()
         window.removeEventListener('keydown', escapeHandler)
+        arrowKeys.removeListeners()
         resolve(state.status)
         return false
       }
     }
+
+    const arrowKeys = trackKeys(['ArrowLeft', 'ArrowRight', 'ArrowUp'])
 
     window.addEventListener('keydown', escapeHandler)
 
