@@ -46,6 +46,10 @@ body {
   box-shadow: -4px -7px 8px white, 4px -7px 8px white;
 }
 
+.monster {
+  background: purple;
+}
+
 /* Game */
 
 .game-wrapper {
@@ -61,11 +65,11 @@ body {
 
 .notification {
   position: absolute;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
+  left: 0;
+  right: 0;
+  margin-left: auto;
   margin-right: auto;
-  top: 20px; 
+  top: 20px;
   z-index: 1;
   width: 40%;
   background-color: rgb(241, 240, 240);

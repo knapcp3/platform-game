@@ -1,6 +1,7 @@
-import Player from "./../Actors/Player"
-import Coin from "./../Actors/Coin"
-import Lava from "./../Actors/Lava"
+import Player from './../Actors/Player'
+import Coin from './../Actors/Coin'
+import Lava from './../Actors/Lava'
+import Monster from './../Actors/Monster'
 
 const levelChars = {
   '.': 'empty',
@@ -10,7 +11,8 @@ const levelChars = {
   'o': Coin,
   '=': Lava,
   '|': Lava,
-  'v': Lava
+  'v': Lava,
+  'M': Monster
 }
 
 export default levelChars

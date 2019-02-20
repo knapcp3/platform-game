@@ -49,9 +49,9 @@ function runLevel(level, Display) {
 
     function animFunc(time) {
       if (isPaused) return false
-
       state = state.update(time, arrowKeys)
       display.syncState(state)
+      
       if (state.status === 'playing') {
         return true
       } else if (ending > 0) {
@@ -95,4 +95,4 @@ async function runGame(plans, Display) {
   Notification.mainNotify("You've won!", gameWrapNode)
 }
 
-export { runGame }
+export { runGame, runLevel }

@@ -36,6 +36,19 @@ export default class Level {
     return false
   }
 
+  downElements(position, size) {
+    let xStart = Math.floor(position.x)
+    let xEnd = Math.ceil(position.x + size.x)
+    let y = Math.ceil(position.y + size.y)
+    let elems = []
+    for (let x = xStart; x < xEnd; x++) {
+      let isOutside = x < 0 || x >= this._width || y < 0 || y >= this._height
+      let elem = isOutside ? 'wall' : this._rows[y][x] 
+      elems.push(elem)
+    }
+    return elems
+  }
+
   get height() {
     return this._height
   }
