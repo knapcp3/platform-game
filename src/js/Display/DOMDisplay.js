@@ -42,6 +42,10 @@ export default class DOMDisplay {
     }
   }
 
+  get dom() {
+    return this._dom1
+  }
+
   clear() {
     this._dom.remove()
   }
