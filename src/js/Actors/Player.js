@@ -1,14 +1,19 @@
 import Vec from './../modules/Vec'
 import Actor from './Actor'
+import params from './actors-params'
 
+const { gravity } = params
 const playerXSpeed = 7
-const gravity = 30
 const jumpSpeed = 17
 
 export default class Player extends Actor {
   constructor(pos, speed) {
     super(pos, new Vec(0.8, 1.5))
     this._speed = speed
+  }
+
+  static create(pos) {
+    return new Player(pos.plus(new Vec(0, -0.5)), new Vec(0, 0))
   }
 
   update(time, state, keys) {
@@ -43,9 +48,5 @@ export default class Player extends Actor {
 
   set speed(v) {
     this._speed = v
-  }
-
-  static create(pos) {
-    return new Player(pos.plus(new Vec(0, -0.5)), new Vec(0, 0))
   }
 }
